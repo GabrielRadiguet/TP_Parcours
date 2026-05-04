@@ -27,3 +27,6 @@ double Square::side(){
 	if(s<0){s=-s;};
 	return s; 
 }
+double Square::perimeter(){
+	return 4 * side();
+}
