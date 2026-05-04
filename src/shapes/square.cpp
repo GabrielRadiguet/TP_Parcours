@@ -6,12 +6,17 @@
 
 Square::Square(Point P, Point Q) : A(P),C(Q){}
 
+double Square::side(){
+	  
+	return sqrt(A.distance(B) * A.distance(B) )/2 ); 
+}
+
 void Square::draw() {
 	
 	// Define points in a vector
 	std::vector<Point> points = {
 		A,
-		Point(C.x, A.y),
+		Point(A.x, A.y),
 		C,
 		Point(A.x, C.y),
 		A
@@ -21,11 +26,7 @@ void Square::draw() {
 	draw_picture(points);
 	
 }
-double Square::side(){
-	double s = C.x - A.x;
-	if(s<0){s=-s;};
-	return s; 
-}
+
 
 double Square::perimeter(){
 	return 4 * side();
