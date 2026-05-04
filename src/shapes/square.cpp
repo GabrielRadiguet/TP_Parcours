@@ -17,7 +17,6 @@ void Square::draw() {
 		A
 		
 	};
-	
 	// Draw the picture by connecting the points
 	draw_picture(points);
 	
@@ -27,6 +26,16 @@ double Square::side(){
 	if(s<0){s=-s;};
 	return s; 
 }
+
 double Square::perimeter(){
 	return 4 * side();
+}
+
+double Square::area(){
+	return side()*side();
+}
+
+Point Square::center(){
+	return Point( (A.x+C.x)/2 , (A.y+C.y)/2 ) ;
+
 }
