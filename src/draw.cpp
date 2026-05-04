@@ -21,3 +21,21 @@ void draw_picture(const std::vector<Point>& points) {
 	}
 	screen.exitonclick();  // Keep the window open until clicked
 }
+
+void draw_circle(const double r, Point c){
+    ct::TurtleScreen screen;
+	ct::Turtle t(screen);
+
+	t.speed(0);
+
+	t.setposition(c.x, c.y);
+	int n = 36;
+    for (int i = 0; i < n; i++) {
+        t.forward(36/n);
+        t.right((360.0/n));
+    }
+
+	t.speed(6);
+
+    screen.exitonclick();
+}
