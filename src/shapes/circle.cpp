@@ -12,3 +12,8 @@ double Circle::area(){
     return M_PI * radius * radius;
 }
 
+bool Circle::equals(Circle circle){
+    if (center.x == circle.center.x && center.y == circle.center.y)
+        return true;
+    return false;
+}
