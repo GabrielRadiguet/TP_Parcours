@@ -13,7 +13,7 @@ double Circle::area(){
 }
 
 bool Circle::equals(Circle circle){
-    if (center.x == circle.center.x && center.y == circle.center.y)
+    if (center.x == circle.center.x && center.y == circle.center.y && radius == circle.radius)
         return true;
     return false;
 }
