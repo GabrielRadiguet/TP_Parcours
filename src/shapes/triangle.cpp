@@ -15,7 +15,13 @@ double Triangle::perimeter(){
 }
 
 double Triangle::area(){
-    return (1/2) * abs(A.x*(B.y-C.y) + B.x*(C.y-A.y) + C.x*(A.y-B.y));
+    return (1.0/2.0) * abs(A.x*(B.y-C.y) + B.x*(C.y-A.y) + C.x*(A.y-B.y));
+}
+
+Point Triangle::center()// computes the center of gravity of the triangle
+{
+    Point centre = Point((A.x + B.x + C.x) / 3.0, (A.y + B.y + C.y) / 3.0);
+    return centre;
 }
 
 void Triangle::draw(){
