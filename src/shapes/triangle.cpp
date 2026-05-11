@@ -44,7 +44,7 @@ void Triangle::translate(Point T){
     C.x += T.x;
     C.y += T.y;
     Point centre = center();
-    std::cout << draw() << std::endl;
+    draw();
 }
 
 void Triangle::resize(double ratio) {
@@ -56,7 +56,7 @@ void Triangle::resize(double ratio) {
     B.y = centre.y + ratio * (B.y - centre.y);
     C.x = centre.x + ratio * (C.x - centre.x);
     C.y = centre.y + ratio * (C.y - centre.y);
-    std::cout << draw() << std::endl;
+    draw();
 }
 
 void Triangle::rotate(double angle) // rotate counterclockwise around the center of the triangle 
@@ -73,7 +73,7 @@ void Triangle::rotate(double angle) // rotate counterclockwise around the center
     dy = C.y;
     C.x = dx * cos(angle) - dy * sin(angle);
     C.y = dx * sin(angle) + dy * cos(angle);
-    std::cout << draw() << std::endl;
+    draw();
 }
 
 bool Triangle::equals(Triangle triangle){
