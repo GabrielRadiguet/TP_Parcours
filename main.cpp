@@ -3,6 +3,9 @@
 #include "shapes.hpp"
 #include <vector>
 #include "test/test.hpp"
+#define _USE_MATH_DEFINES
+#include <cmath>
+#include <iostream>
 
 int main() {
 	test();

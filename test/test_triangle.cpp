@@ -6,7 +6,7 @@
 #include "../include/point.hpp"
 #include "../include/shapes/circle.hpp"
 #include "../include/shapes/triangle.hpp"
-/*
+
 void test_triangle() {
     std::cout << "--- Debut Tests Triangle ---" << std::endl;
 
@@ -65,4 +65,3 @@ void test_triangle() {
 
     std::cout << "--- Fin Tests Triangle ---" << std::endl << std::endl;
 }
-*/
