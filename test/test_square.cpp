@@ -34,12 +34,12 @@ void test_square() {
     s.rotate(M_PI_4); // rotation pi/4
     ASSERT(s.equals(s2));
 
-    Square s(Point(1,1), Point(2, 2));
+    Square s5(Point(1,1), Point(2, 2));
     s4.translate(Point(-5,10));
-    ASSERT(s.equals(Square(Point(-4, 11), Point(-3, 12))));
+    ASSERT(s5.equals(Square(Point(-4, 11), Point(-3, 12))));
 
-    s.resize(2);
-    ASSERT(s.equals(Square(Point(-3.5, 10.5), Point(-3.5, 12.5))));
+    s5.resize(2);
+    ASSERT(s5.equals(Square(Point(-3.5, 10.5), Point(-3.5, 12.5))));
 
     std::cout << "--- Fin Tests Carre ---" << std::endl << std::endl;
 }

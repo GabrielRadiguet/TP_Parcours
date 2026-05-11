@@ -9,6 +9,8 @@ namespace ct = cturtle;
 void draw_picture(const std::vector<Point>& points) {
 	ct::TurtleScreen screen;
 	ct::Turtle t(screen);
+
+	t.speed(0);
 	
 	if (points.empty()) return; // Nothing to draw
 	t.hideturtle();
