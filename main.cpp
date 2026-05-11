@@ -19,6 +19,8 @@ int main() {
 	
 	// Draw the picture by connecting the points
 	draw_picture(points);
-	
+
+	Point centre = {0, 0};
+	draw_circle(15, centre);
 	return 0;
 }
