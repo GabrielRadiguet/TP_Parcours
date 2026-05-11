@@ -17,7 +17,7 @@ void test_square() {
     ASSERT(s.area() == 1);
     ASSERT(s.center().equals(Point(0.5, 0.5)));
 
-    Square s2(Point(0.5, (sqrt(2)/2) - 0.5), Point((sqrt(2)/2) + 0.5, 0.5));
+    Square s2(Point(0.5, 0.5 - (sqrt(2)/2)), Point( 0.5, 0.5 + (sqrt(2)/2)));
     ASSERT(!s2.equals(s));
     ASSERT(s2.side() == 1);
     ASSERT(s2.perimeter() == 4);
@@ -34,12 +34,11 @@ void test_square() {
     s.rotate(std::numbers::pi / 4); // rotation pi/4
     ASSERT(s.equals(s2));
 
-    Square s5(Point(1,1), Point(2, 2));
     s4.translate(Point(-5,10));
-    ASSERT(s5.equals(Square(Point(-4, 11), Point(-3, 12))));
+    ASSERT(s4.equals(Square(Point(-6, 9), Point(-3, 12))));
 
-    s5.resize(2);
-    ASSERT(s5.equals(Square(Point(-3.5, 10.5), Point(-3.5, 12.5))));
+    s4.resize(2);
+    ASSERT(s4.equals(Square(Point(-7.5, 7.5), Point(-1.5, 13.5))));
 
     std::cout << "--- Fin Tests Carre ---" << std::endl << std::endl;
 }

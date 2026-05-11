@@ -78,6 +78,8 @@ bool Square::equals(Square square){
 	// Teste si les points A et C de l'instance courante sont égaux aux points A et C de square
 	if ( A.x == square.A.x and A.y == square.A.y and C.x == square.C.x and C.y == square.C.y ){
 		return true;
+	}else if ( A.x == square.C.x and A.y == square.C.y and C.x == square.A.x and C.y == square.A.y ){
+		return true;
 	}
 	else{
 		 return false;
@@ -88,23 +90,18 @@ bool Square::equals(Square square){
 
 void Square::translate(Point T) {
 	/**
- * Translate le carré de sorte que son centre se déplace vers le point T.
+ * Translate le carré de sorte que son centre se déplace selon le vecteur T.
  * 
- * Le vecteur de translation est (T - centre). Ce vecteur est ajouté aux
+ * Le vecteur de translation est T. Ce vecteur est ajouté aux
  * deux coins opposés A et C.
  * 
- * @param T Point destination pour le centre du carré.
+ * @param T vecteur de translation.
  */
-    
-    std::vector<double> v1(2);
-    v1.at(0) = T.x - center().x;
-    v1.at(1) = T.y - center().y;
-    
-    
-    A.x = A.x + v1.at(0);
-    A.y = A.y + v1.at(1);
-    C.x = C.x + v1.at(0);
-    C.y = C.y + v1.at(1);
+
+    A.x = A.x + T.x;
+    A.y = A.y + T.y;
+    C.x = C.x + T.x;
+    C.y = C.y + T.y;
 }
 
 
