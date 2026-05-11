@@ -2,6 +2,7 @@
 #include "point.hpp"
 #include "CTurtle.hpp"
 #include <vector>
+#include <iostream>
 
 namespace ct = cturtle;
 

@@ -2,9 +2,10 @@
 #include "point.hpp"
 #include "shapes.hpp"
 #include <vector>
-
+#include "test/test.hpp"
 
 int main() {
+	test();
 	
 	// Define points in a vector
 	std::vector<Point> points = {
@@ -18,6 +19,8 @@ int main() {
 	
 	// Draw the picture by connecting the points
 	draw_picture(points);
-	
+
+	Point centre = {0, 0};
+	draw_circle(15, centre);
 	return 0;
 }

@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++23 -Iinclude
 LDFLAGS_WIN = -lgdi32 -luser32
 LDFLAGS_LINUX = -lX11
-SRC = src/*.cpp src/shapes/*.cpp main.cpp
+SRC = src/*.cpp src/shapes/*.cpp test/*.cpp main.cpp
 
 LDFLAGS :=
 
