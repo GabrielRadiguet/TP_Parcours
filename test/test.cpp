@@ -38,5 +38,5 @@ void test()
 
     test_circle();
     test_square();
-    //test_triangle();
+    test_triangle();
 }
