@@ -46,3 +46,29 @@ Point Square::center(){
 	return Point( (A.x+C.x)/2 , (A.y+C.y)/2 ) ;
 
 }
+
+void Square::resize(double ratio){
+	Point c = center();
+    std::vector<double> v1 ={ratio * (c.x - A.x) ,ratio * (c.y - A.y) };
+    C = Point(c.x + v1.at(0) , c.y + v1.at(1));
+    A = Point(c.x - v1.at(0) , c.y - v1.at(1) ) ;
+    
+
+}
+
+void Square::rotate(double angle){
+	Point c = center();
+    std::vector<double> v1 ={ cos(angle) * (c.x - A.x) - sin(angle) * (c.y - A.y) , sin(angle) * (c.x - A.x) + cos(angle) *(c.y - A.y) };
+    C = Point(c.x + v1.at(0) , c.y + v1.at(1));
+    A = Point(c.x - v1.at(0) , c.y - v1.at(1) );
+}
+
+bool Square::equals(Square square){
+	if ( A.x == square.A.x and A.y == square.A.y and C.x == square.C.x and C.y == square.C.y ){
+		return true;
+	}
+	else{
+		 return false;
+		 }
+
+}
