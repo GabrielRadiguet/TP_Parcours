@@ -36,6 +36,46 @@ void Triangle::draw(){
     draw_picture(dessin);
 }
 
+void Triangle::translate(Point T){
+    A.x += T.x;
+    A.y += T.y;
+    B.x += T.x;
+    B.y += T.y;
+    C.x += T.x;
+    C.y += T.y;
+    Point centre = center();
+    std::cout << draw() << std::endl;
+}
+
+void Triangle::resize(double ratio) {
+    // resize while maintaining center
+    Point centre = center();
+    A.x = centre.x + ratio * (A.x - centre.x);
+    A.y = centre.y + ratio * (A.y - centre.y);
+    B.x = centre.x + ratio * (B.x - centre.x);
+    B.y = centre.y + ratio * (B.y - centre.y);
+    C.x = centre.x + ratio * (C.x - centre.x);
+    C.y = centre.y + ratio * (C.y - centre.y);
+    std::cout << draw() << std::endl;
+}
+
+void Triangle::rotate(double angle) // rotate counterclockwise around the center of the triangle 
+{
+    double dx = A.x;
+    double dy = A.y;
+    A.x = dx * cos(angle) - dy * sin(angle);
+    A.y = dx * sin(angle) + dy * cos(angle);
+    dx = B.x;
+    dy = B.y;
+    B.x = dx * cos(angle) - dy * sin(angle);
+    B.y = dx * sin(angle) + dy * cos(angle);
+    dx = C.x;
+    dy = C.y;
+    C.x = dx * cos(angle) - dy * sin(angle);
+    C.y = dx * sin(angle) + dy * cos(angle);
+    std::cout << draw() << std::endl;
+}
+
 bool Triangle::equals(Triangle triangle){
     if (A.x == triangle.A.x && A.y == triangle.A.y && B.x == triangle.B.x && B.y == triangle.B.y && C.x == triangle.C.x && C.y == triangle.C.y){
         return true;
