@@ -33,6 +33,24 @@ void Circle::draw(){
     draw_picture(liste);
 }
 
+void Circle::translate(Point T){
+    std::vector<Point> liste; 
+    int nSeg = 36; //Nombre de segment de cercle
+    double angle;
+    Point p;
+    for (int i=0; i<nSeg; i++){
+        angle = 2 * M_PI * i / nSeg;
+        p.x = cos(angle)*radius + T.x;
+        p.y = sin(angle)*radius + T.y;
+        liste.push_back(p);
+    }
+    angle = 0;
+    p.x = cos(angle)*radius + T.x;
+    p.y = sin(angle)*radius + T.y;
+    liste.push_back(p);
+    draw_picture(liste);
+}
+
 bool Circle::equals(Circle circle){
     if (center.x == circle.center.x && center.y == circle.center.y && radius == circle.radius)
         return true;
