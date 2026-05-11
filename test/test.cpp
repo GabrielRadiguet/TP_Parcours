@@ -1,5 +1,9 @@
 #include <iostream>
+#include <cmath>
+
 #include "test.hpp"
+
+#include "../include/point.hpp"
 
 void check_assert(bool exp, const char* fichier, int nb_ligne, const char* ligne)
 {
@@ -7,8 +11,32 @@ void check_assert(bool exp, const char* fichier, int nb_ligne, const char* ligne
         std::cerr << "Failed: " << ligne << " in " << fichier << ' ' << nb_ligne << std::endl;
     }
 }
+
 void test()
-{   
-    ASSERT(1==0);
-    ASSERT(2==0);
+{
+    std::cout << "--- Debut Tests Point ---" << std::endl;
+
+    Point A(1, 2);
+    Point B(4, 6);
+    ASSERT(A.distance(B) == 5);
+    ASSERT(B.distance(A) == 5);
+    ASSERT(B.distance(B) == 0);
+    ASSERT(A.distance(A) == 0);
+
+    ASSERT(B.equals(B));
+    ASSERT(A.equals(A));
+
+    Point C(0, 0);
+    Point D(1, 1);
+    ASSERT(C.distance(D) == std::sqrt(2));
+
+    Point E(67, 89);
+    Point F(-50, -30);
+    ASSERT(E.distance(F) == std::sqrt(27850));
+
+    std::cout << "--- Fin Tests Point ---" << std::endl << std::endl;
+
+    test_circle();
+    test_square();
+    test_triangle();
 }
