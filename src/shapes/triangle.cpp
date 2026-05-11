@@ -35,3 +35,51 @@ void Triangle::draw(){
 
     draw_picture(dessin);
 }
+
+bool Triangle::equals(Triangle triangle){
+    if (A.x == triangle.A.x && A.y == triangle.A.y && B.x == triangle.B.x && B.y == triangle.B.y && C.x == triangle.C.x && C.y == triangle.C.y){
+        return true;
+    }
+    return false;
+}
+
+bool Triangle::isRightAngled(){
+    double ab = A.distance(B);
+    double ac = A.distance(C);
+    double cb = C.distance(B);
+    if(ab > ac && ab > cb){
+        if(ab == sqrt(ac * ac + cb * cb)){
+            return true;
+        }
+    }
+    if(ac > ab && ac > cb){
+        if(ac == sqrt(ab * ab + cb * cb)){
+            return true;
+        }
+    }
+    if(cb > ac && cb > ab){
+        if(cb == sqrt(ac * ac + ab * ab)){
+            return true;
+        }
+    }
+}
+
+bool Triangle::isEquilateral(){
+    double ab = A.distance(B);
+    double ac = A.distance(C);
+    double cb = C.distance(B);
+    if(ab == ac && ab == cb){
+        return true;
+    }
+    return false;
+}
+
+bool Triangle::isIsoceles(){
+    double ab = A.distance(B);
+    double ac = A.distance(C);
+    double cb = C.distance(B);
+    if(ab == ac || ab == cb || ac == cb){
+        return true;
+    }
+    return false;
+}
