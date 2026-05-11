@@ -73,7 +73,16 @@ bool Square::equals(Square square){
 
 }
 
+
 void Square::translate(Point T) {
+	/**
+ * Translate le carré de sorte que son centre se déplace vers le point T.
+ * 
+ * Le vecteur de translation est (T - centre). Ce vecteur est ajouté aux
+ * deux coins opposés A et C.
+ * 
+ * @param T Point destination pour le centre du carré.
+ */
     
     std::vector<double> v1(2);
     v1.at(0) = T.x - center().x;
@@ -85,6 +94,7 @@ void Square::translate(Point T) {
     C.x = C.x + v1.at(0);
     C.y = C.y + v1.at(1);
 }
+
 
 Circle Square::inscribedCircle(){
 	return Circle(side()/2 , center());
