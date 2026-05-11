@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <numbers>
 
 #include "test.hpp"
 
@@ -17,9 +18,10 @@ void test_triangle() {
     ASSERT(t.center().equals(Point(1.0/3, 1.0/3)));
 
     Triangle t2(Point(-1.0/3, -1.0/3), Point(2 - 1.0/3, -1.0/3), Point(-1.0/3, 2 - 1.0/3));
-    ASSERT(t.perimeter() == 4 + std::sqrt(8));
-    ASSERT(t.area() == 2);
-    ASSERT(t.center().equals(Point(1.0/3, 1.0/3)));
+    ASSERT(t2.perimeter() == 4 + std::sqrt(8));
+    ASSERT(t2.area() == 2);
+    std::cout << t2.center().x << t2.center().y << 1.0/3 << std::endl;
+    ASSERT(t2.center().equals(Point(1.0/3, 1.0/3)));
 
     ASSERT(!t.equals(t2));
     t.resize(2);
@@ -27,10 +29,11 @@ void test_triangle() {
 
     Triangle t3(Point(0, 0), Point(1, 0), Point(0, 1));
     Triangle t4(Point(-10, -10), Point(-9, -10), Point(-10, -9));
-    Triangle t5(Point(1, 1), Point(1, 0), Point(0, 1));
-
+    Triangle t5(Point(2.0/3, 2.0/3), Point(-1.0/3, 2.0/3), Point(2.0/3, -1.0/3));
     ASSERT(!t5.equals(t3));
     t5.rotate(std::numbers::pi); // rotation de pi
+    std::cout << t5.center().x << t5.center().y << std::endl;
+    std::cout << t5.A.x << t5.A.y << t5.B.x << t5.B.y  << t5.C.x << t5.C.y << std::endl;
     ASSERT(t5.equals(t3));
 
     ASSERT(!t3.equals(t4));
@@ -42,7 +45,7 @@ void test_triangle() {
 
     Triangle t6(Point(-1,-1), Point(1, 0), Point(0, 1));
     ASSERT(!t6.isRightAngled());
-    ASSERT(t6.isEquilateral());
+    ASSERT(t6.isIsoceles());
 
 
     Triangle t7(Point(0,0), Point(1, 0), Point(0.5, sqrt(3)/2));

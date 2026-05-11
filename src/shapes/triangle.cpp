@@ -38,13 +38,12 @@ void Triangle::draw(){
 
 void Triangle::translate(Point T){
     Point centre = center();
-    A.x += T.x - centre.x;
-    A.y += T.y- centre.y;
-    B.x += T.x- centre.x;
-    B.y += T.y- centre.y;
-    C.x += T.x- centre.x;
-    C.y += T.y- centre.y;
-    draw();
+    A.x += T.x;
+    A.y += T.y;
+    B.x += T.x;
+    B.y += T.y;
+    C.x += T.x;
+    C.y += T.y;
 }
 
 void Triangle::resize(double ratio) {
@@ -56,11 +55,11 @@ void Triangle::resize(double ratio) {
     B.y = centre.y + ratio * (B.y - centre.y);
     C.x = centre.x + ratio * (C.x - centre.x);
     C.y = centre.y + ratio * (C.y - centre.y);
-    draw();
 }
 
 void Triangle::rotate(double angle) // rotate counterclockwise around the center of the triangle 
-{
+{   Point centre = center();
+    translate(Point(0,0));
     double dx = A.x;
     double dy = A.y;
     A.x = dx * cos(angle) - dy * sin(angle);
@@ -73,11 +72,26 @@ void Triangle::rotate(double angle) // rotate counterclockwise around the center
     dy = C.y;
     C.x = dx * cos(angle) - dy * sin(angle);
     C.y = dx * sin(angle) + dy * cos(angle);
-    draw();
+    translate(centre);
 }
 
 bool Triangle::equals(Triangle triangle){
-    if (A.x == triangle.A.x && A.y == triangle.A.y && B.x == triangle.B.x && B.y == triangle.B.y && C.x == triangle.C.x && C.y == triangle.C.y){
+    if(A.equals(triangle.A) && B.equals(triangle.B) && C.equals(C)){
+        return true;
+    }
+    if(A.equals(triangle.A) && B.equals(triangle.C) && C.equals(B)){
+        return true;
+    }
+    if(A.equals(triangle.B) && B.equals(triangle.A) && C.equals(C)){
+        return true;
+    }
+    if(A.equals(triangle.B) && B.equals(triangle.C) && C.equals(A)){
+        return true;
+    }
+    if(A.equals(triangle.C) && B.equals(triangle.B) && C.equals(A)){
+        return true;
+    }
+    if(A.equals(triangle.C) && B.equals(triangle.A) && C.equals(B)){
         return true;
     }
     return false;
