@@ -72,3 +72,16 @@ bool Square::equals(Square square){
 		 }
 
 }
+
+void translate(Point T) {
+    
+    std::vector<double> v1(2);
+    v1.at(0) = T.x - center().x;
+    v1.at(1) = T.y - center().y;
+    
+    
+    A.x = A.x + v1.at(0);
+    A.y = A.y + v1.at(1);
+    C.x = C.x + v1.at(0);
+    C.y = C.y + v1.at(1);
+}
