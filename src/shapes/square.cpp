@@ -3,22 +3,28 @@
 #include "shapes.hpp"
 #include "shapes/square.hpp"
 #include <vector>
+#include <cmath>
 
 Square::Square(Point P, Point Q) : A(P),C(Q){}
 
+
 double Square::side(){
 	  
-	return sqrt(A.distance(B) * A.distance(B) )/2 ); 
+	return sqrt((A.distance(C) * A.distance(C) )/2 ); 
 }
 
 void Square::draw() {
+	Point c = center();
+	std::vector<double> v1 ={-(c.y - A.y) , c.x - A.x };
 	
+
+
 	// Define points in a vector
 	std::vector<Point> points = {
 		A,
-		Point(A.x, A.y),
+		Point(c.x + v1.at(0) , c.y + v1.at(1) ) ,
 		C,
-		Point(A.x, C.y),
+		Point(c.x - v1.at(0) , c.y - v1.at(1) ) ,
 		A
 		
 	};
