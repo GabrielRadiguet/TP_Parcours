@@ -14,8 +14,12 @@ double Triangle::perimeter(){
     return A.distance(B) + B.distance(C) + C.distance(A);
 }
 
-double Triangle::area(){
-    return (1.0/2.0) * abs(A.x*(B.y-C.y) + B.x*(C.y-A.y) + C.x*(A.y-B.y));
+double Triangle::area(){ //formule de Heron
+    double a = A.distance(B);
+    double b = B.distance(C);
+    double c = C.distance(A);
+    double s = (a + b + c) / 2.0;
+    return sqrt(s * (s - a) * (s - b) * (s - c));
 }
 
 Point Triangle::center()// computes the center of gravity of the triangle
@@ -38,13 +42,12 @@ void Triangle::draw(){
 
 void Triangle::translate(Point T){
     Point centre = center();
-    A.x += T.x - centre.x;
-    A.y += T.y- centre.y;
-    B.x += T.x- centre.x;
-    B.y += T.y- centre.y;
-    C.x += T.x- centre.x;
-    C.y += T.y- centre.y;
-    draw();
+    A.x += T.x;
+    A.y += T.y;
+    B.x += T.x;
+    B.y += T.y;
+    C.x += T.x;
+    C.y += T.y;
 }
 
 void Triangle::resize(double ratio) {
@@ -56,28 +59,38 @@ void Triangle::resize(double ratio) {
     B.y = centre.y + ratio * (B.y - centre.y);
     C.x = centre.x + ratio * (C.x - centre.x);
     C.y = centre.y + ratio * (C.y - centre.y);
-    draw();
 }
 
 void Triangle::rotate(double angle) // rotate counterclockwise around the center of the triangle 
-{
-    double dx = A.x;
-    double dy = A.y;
-    A.x = dx * cos(angle) - dy * sin(angle);
-    A.y = dx * sin(angle) + dy * cos(angle);
-    dx = B.x;
-    dy = B.y;
-    B.x = dx * cos(angle) - dy * sin(angle);
-    B.y = dx * sin(angle) + dy * cos(angle);
-    dx = C.x;
-    dy = C.y;
-    C.x = dx * cos(angle) - dy * sin(angle);
-    C.y = dx * sin(angle) + dy * cos(angle);
-    draw();
+{   
+    Point centre = center();
+    translate(Point(centre.x * -1, centre.y * -1));
+    A.x = A.x * cos(angle) - A.y * sin(angle);
+    A.y = A.x * sin(angle) + A.y * cos(angle);
+    B.x = B.x * cos(angle) - B.y * sin(angle);
+    B.y = B.x * sin(angle) + B.y * cos(angle);
+    C.x = C.x * cos(angle) - C.y * sin(angle);
+    C.y = C.x * sin(angle) + C.y * cos(angle);
+    translate(centre);
 }
 
 bool Triangle::equals(Triangle triangle){
-    if (A.x == triangle.A.x && A.y == triangle.A.y && B.x == triangle.B.x && B.y == triangle.B.y && C.x == triangle.C.x && C.y == triangle.C.y){
+    if(A.equals(triangle.A) && B.equals(triangle.B) && C.equals(C)){
+        return true;
+    }
+    if(A.equals(triangle.A) && B.equals(triangle.C) && C.equals(B)){
+        return true;
+    }
+    if(A.equals(triangle.B) && B.equals(triangle.A) && C.equals(C)){
+        return true;
+    }
+    if(A.equals(triangle.B) && B.equals(triangle.C) && C.equals(A)){
+        return true;
+    }
+    if(A.equals(triangle.C) && B.equals(triangle.B) && C.equals(A)){
+        return true;
+    }
+    if(A.equals(triangle.C) && B.equals(triangle.A) && C.equals(B)){
         return true;
     }
     return false;
@@ -126,12 +139,24 @@ bool Triangle::isIsoceles(){
 }
 
 Circle Triangle::inscribedCircle(){
-    return Circle((2.0 * area())/perimeter(), center());
+    double a = A.distance(B);
+    double b = B.distance(C);
+    double c = C.distance(A);
+
+    //https://en.wikipedia.org/wiki/Incenter#Cartesian_coordinates
+    double x = (a * A.x + b * B.x + c * C.x) / (a + b + c);
+    double y = (a * A.y + b * B.y + c * C.y) / (a + b + c);
+    return Circle((2.0 * area())/perimeter(), Point(x, y));
 }
 
 Circle Triangle::circumscribedCircle(){
     double ab = A.distance(B);
     double ac = A.distance(C);
     double cb = C.distance(B);
-    return Circle((ab + ac + cb)/4.0 * area(), center());
+
+    // https://en.wikipedia.org/wiki/Circumcircle#Cartesian_coordinates_2
+    double D = 2 * (A.x * (B.y - C.y) + B.x * (C.y - A.y) + C.x * (A.y - B.y));
+    double Ux = ((A.x * A.x + A.y * A.y) * (B.y - C.y) + (B.x * B.x + B.y * B.y) * (C.y - A.y) + (C.x * C.x + C.y * C.y) * (A.y - B.y)) / D;
+    double Uy = ((A.x * A.x + A.y * A.y) * (C.x - B.x) + (B.x * B.x + B.y * B.y) * (A.x - C.x) + (C.x * C.x + C.y * C.y) * (B.x - A.x)) / D;
+    return Circle((ab * ac * cb)/(4.0 * area()), Point(Ux, Uy));
 }

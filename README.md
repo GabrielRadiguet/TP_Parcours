@@ -72,3 +72,13 @@ bool isIsoceles() -->	Vérifie si le triangle est isocèle (au moins 2 côtés �
 Circle inscribedCircle() -->	Retourne le cercle inscrit dans le triangle (cercle tangent aux 3 côtés).
 
 Circle circumscribedCircle() -->	Retourne le cercle circonscrit au triangle (cercle passant par les 3 sommets).
+
+
+TODO :
+- description du projet et env (Makefile avec linux et windows ou cmd individuelles)
+- dire ce qui est changé dans le Make
+- instruction pour run
+- wiki des methodes
+
+commande compilation windows : `g++ -std=c++23 -Iinclude -o main src/*.cpp src/shapes/*.cpp test/*.cpp main.cpp -lgdi32 -luser32`
+commande compilation Linux : `g++ -std=c++23 -Iinclude -o main src/*.cpp src/shapes/*.cpp test/*.cpp main.cpp -lX11`
