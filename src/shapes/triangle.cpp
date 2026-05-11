@@ -37,13 +37,13 @@ void Triangle::draw(){
 }
 
 void Triangle::translate(Point T){
-    A.x += T.x;
-    A.y += T.y;
-    B.x += T.x;
-    B.y += T.y;
-    C.x += T.x;
-    C.y += T.y;
     Point centre = center();
+    A.x += T.x - centre.x;
+    A.y += T.y- centre.y;
+    B.x += T.x- centre.x;
+    B.y += T.y- centre.y;
+    C.x += T.x- centre.x;
+    C.y += T.y- centre.y;
     draw();
 }
 
@@ -102,6 +102,7 @@ bool Triangle::isRightAngled(){
             return true;
         }
     }
+    return false;
 }
 
 bool Triangle::isEquilateral(){
@@ -122,4 +123,15 @@ bool Triangle::isIsoceles(){
         return true;
     }
     return false;
+}
+
+Circle Triangle::inscribedCircle(){
+    return Circle((2.0 * area())/perimeter(), center());
+}
+
+Circle Triangle::circumscribedCircle(){
+    double ab = A.distance(B);
+    double ac = A.distance(C);
+    double cb = C.distance(B);
+    return Circle((ab + ac + cb)/4.0 * area(), center());
 }
