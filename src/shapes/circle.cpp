@@ -34,37 +34,40 @@ void Circle::draw(){
 }
 
 void Circle::translate(Point T){
+    center.x += T.x;
+    center.y += T.y;
     std::vector<Point> liste; 
     int nSeg = 36; //Nombre de segment de cercle
     double angle;
     Point p;
     for (int i=0; i<nSeg; i++){
-        angle = 2 * std::numbers::pi * i / nSeg;
-        p.x = cos(angle)*radius + T.x;
-        p.y = sin(angle)*radius + T.y;
+        angle = 2 * M_PI * i / nSeg;
+        p.x = cos(angle)*radius + center.x;
+        p.y = sin(angle)*radius + center.y;
         liste.push_back(p);
     }
     angle = 0;
-    p.x = cos(angle)*radius + T.x;
-    p.y = sin(angle)*radius + T.y;
+    p.x = cos(angle)*radius + center.x;
+    p.y = sin(angle)*radius + center.y;
     liste.push_back(p);
     draw_picture(liste);
 }
 
 void Circle::resize(double ratio){
+    radius *= ratio;
     std::vector<Point> liste; 
     int nSeg = 36; //Nombre de segment de cercle
     double angle;
     Point p;
     for (int i=0; i<nSeg; i++){
-        angle = 2 * std::numbers::pi * i / nSeg;
-        p.x = cos(angle)*radius * ratio + center.x;
-        p.y = sin(angle)*radius * ratio + center.y;
+        angle = 2 * M_PI * i / nSeg;
+        p.x = cos(angle)*radius + center.x;
+        p.y = sin(angle)*radius + center.y;
         liste.push_back(p);
     }
     angle = 0;
-    p.x = cos(angle)*radius * ratio + center.x;
-    p.y = sin(angle)*radius * ratio + center.y;
+    p.x = cos(angle)*radius + center.x;
+    p.y = sin(angle)*radius + center.y;
     liste.push_back(p);
     draw_picture(liste);
 }
