@@ -9,3 +9,7 @@ double Point::distance(Point B) {
     double dy = y - B.y;
     return sqrt(dx * dx + dy * dy);
 }
+
+bool Point::equals(Point B) {
+    return (x == B.x) && (y == B.y);
+}
