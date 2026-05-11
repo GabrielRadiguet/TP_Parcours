@@ -3,16 +3,16 @@
 #include "draw.hpp"
 #include  <cmath>
 #include <vector>
-
+#include <numbers>
 
 Circle::Circle(double r, Point c) : radius(r), center(c) {};
 
 double Circle::circumference(){
-    return M_PI * radius * 2;
+    return std::numbers::pi * radius * 2;
 }
 
 double Circle::area(){
-    return M_PI * radius * radius;
+    return std::numbers::pi * radius * radius;
 }
 
 void Circle::draw(){
@@ -21,7 +21,7 @@ void Circle::draw(){
     double angle;
     Point p;
     for (int i=0; i<nSeg; i++){
-        angle = 2 * M_PI * i / nSeg;
+        angle = 2 * std::numbers::pi * i / nSeg;
         p.x = cos(angle)*radius + center.x;
         p.y = sin(angle)*radius + center.y;
         liste.push_back(p);
@@ -39,7 +39,7 @@ void Circle::translate(Point T){
     double angle;
     Point p;
     for (int i=0; i<nSeg; i++){
-        angle = 2 * M_PI * i / nSeg;
+        angle = 2 * std::numbers::pi * i / nSeg;
         p.x = cos(angle)*radius + T.x;
         p.y = sin(angle)*radius + T.y;
         liste.push_back(p);
@@ -57,7 +57,7 @@ void Circle::resize(double ratio){
     double angle;
     Point p;
     for (int i=0; i<nSeg; i++){
-        angle = 2 * M_PI * i / nSeg;
+        angle = 2 * std::numbers::pi * i / nSeg;
         p.x = cos(angle)*radius * ratio + center.x;
         p.y = sin(angle)*radius * ratio + center.y;
         liste.push_back(p);

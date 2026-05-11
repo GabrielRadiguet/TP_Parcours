@@ -31,7 +31,7 @@ void test_square() {
     s3.resize(3);
     ASSERT(s3.equals(s4));
 
-    s.rotate(M_PI_4); // rotation pi/4
+    s.rotate(std::numbers::pi / 4); // rotation pi/4
     ASSERT(s.equals(s2));
 
     Square s5(Point(1,1), Point(2, 2));

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <numbers>
 
 #include "test.hpp"
 
@@ -13,8 +14,8 @@ void test_circle()
     Circle c(50, Point(0, 0));
     ASSERT(c.equals(c));
 
-    ASSERT(c.circumference() == 2 * 50 * M_PI);
-    ASSERT(c.area() == 50 * 50 * M_PI);
+    ASSERT(c.circumference() == 2 * 50 * std::numbers::pi);
+    ASSERT(c.area() == 50 * 50 * std::numbers::pi);
 
     Point p(10,10);
     Circle c2(50, p);

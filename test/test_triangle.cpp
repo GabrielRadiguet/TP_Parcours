@@ -30,7 +30,7 @@ void test_triangle() {
     Triangle t5(Point(1, 1), Point(1, 0), Point(0, 1));
 
     ASSERT(!t5.equals(t3));
-    t5.rotate(M_PI); // rotation de pi
+    t5.rotate(std::numbers::pi); // rotation de pi
     ASSERT(t5.equals(t3));
 
     ASSERT(!t3.equals(t4));
