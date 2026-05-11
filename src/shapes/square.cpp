@@ -73,7 +73,7 @@ bool Square::equals(Square square){
 
 }
 
-void translate(Point T) {
+void Square::translate(Point T) {
     
     std::vector<double> v1(2);
     v1.at(0) = T.x - center().x;
@@ -84,4 +84,12 @@ void translate(Point T) {
     A.y = A.y + v1.at(1);
     C.x = C.x + v1.at(0);
     C.y = C.y + v1.at(1);
+}
+
+Circle Square::inscribedCircle(){
+	return Circle(side()/2 , center());
+}
+	
+Circle Square::circumscribedCircle(){
+	return Circle(A.distance(C)/2 , center());
 }
