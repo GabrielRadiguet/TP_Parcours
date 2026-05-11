@@ -55,7 +55,7 @@ Point Square::center(){
 void Square::resize(double ratio){
 	Point c = center();
 	// Définition du vecteur v1 correspondant au vecteur du centre vers C multiplié par le ratio
-    std::vector<double> v1 ={ratio * (c.x - A.x)/2 ,ratio * (c.y - A.y)/2 };
+    std::vector<double> v1 ={ratio * (c.x - A.x) ,ratio * (c.y - A.y) };
 
 	// application du vecteur v1 au point A et C
     C = Point(c.x + v1.at(0) , c.y + v1.at(1));
