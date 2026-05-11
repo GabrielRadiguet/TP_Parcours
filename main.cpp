@@ -2,9 +2,10 @@
 #include "point.hpp"
 #include "shapes.hpp"
 #include <vector>
-
+#include "test/test.hpp"
 
 int main() {
+	test();
 	
 	// Define points in a vector
 	std::vector<Point> points = {
