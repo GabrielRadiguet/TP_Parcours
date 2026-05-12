@@ -13,13 +13,13 @@ void test_triangle() {
 
     Triangle t(Point(0.0, 0.0), Point(1.0, 0.0), Point(0.0, 1.0));
     ASSERT(t.equals(t));
-    ASSERT(t.perimeter() == 2 + std::sqrt(2));
-    ASSERT(t.area() == 0.5);
+    ASSERT(comp_double(t.perimeter(), 2 + std::sqrt(2)));
+    ASSERT(comp_double(t.area(), 0.5));
     ASSERT(t.center().equals(Point(1.0/3, 1.0/3)));
 
     Triangle t2(Point(-1.0, -1.0), Point(3.0, -1.0), Point(-1.0, 3.0));
-    ASSERT(t2.perimeter() == 8 + std::sqrt(32));
-    ASSERT(t2.area() == 8);
+    ASSERT(comp_double(t2.perimeter(), 8 + std::sqrt(32)));
+    ASSERT(comp_double(t2.area(), 8));
     ASSERT(t2.center().equals(Point(1.0/3, 1.0/3)));
 
     ASSERT(!t.equals(t2));

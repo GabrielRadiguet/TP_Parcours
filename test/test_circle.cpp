@@ -14,8 +14,8 @@ void test_circle()
     Circle c(50, Point(0, 0));
     ASSERT(c.equals(c));
 
-    ASSERT(c.circumference() == 2 * 50 * std::numbers::pi);
-    ASSERT(c.area() == 50 * 50 * std::numbers::pi);
+    ASSERT(comp_double(c.circumference(), 2 * 50 * std::numbers::pi));
+    ASSERT(comp_double(c.area(), 50 * 50 * std::numbers::pi));
 
     Point p(10,10);
     Circle c2(50, p);
@@ -29,7 +29,7 @@ void test_circle()
     ASSERT(c3.equals(c));
 
     c.resize(9);
-    ASSERT(c.radius == 9 * 50);
+    ASSERT(comp_double(c.radius, 9 * 50));
 
     std::cout << "--- Fin Tests Cercle ---" << std::endl << std::endl;
 }

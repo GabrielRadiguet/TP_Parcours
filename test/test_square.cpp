@@ -12,16 +12,16 @@ void test_square() {
 
     Square s(Point(0, 0), Point(1, 1));
     ASSERT(s.equals(s));
-    ASSERT(s.side() == 1);
-    ASSERT(s.perimeter() == 4);
-    ASSERT(s.area() == 1);
+    ASSERT(comp_double(s.side(), 1));
+    ASSERT(comp_double(s.perimeter(), 4));
+    ASSERT(comp_double(s.area(), 1));
     ASSERT(s.center().equals(Point(0.5, 0.5)));
 
     Square s2(Point(0.5, 0.5 - (sqrt(2)/2)), Point( 0.5, 0.5 + (sqrt(2)/2)));
     ASSERT(!s2.equals(s));
-    ASSERT(s2.side() == 1);
-    ASSERT(s2.perimeter() == 4);
-    ASSERT(s2.area() == 1);
+    ASSERT(comp_double(s2.side(), 1));
+    ASSERT(comp_double(s2.perimeter(), 4));
+    ASSERT(comp_double(s2.area(), 1));
     ASSERT(s2.center().equals(s.center()));
 
     Square s3(Point(0, 0), Point(1, 1));

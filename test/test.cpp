@@ -18,21 +18,21 @@ void test()
 
     Point A(1, 2);
     Point B(4, 6);
-    ASSERT(A.distance(B) == 5);
-    ASSERT(B.distance(A) == 5);
-    ASSERT(B.distance(B) == 0);
-    ASSERT(A.distance(A) == 0);
+    ASSERT(comp_double(A.distance(B), 5));
+    ASSERT(comp_double(B.distance(A), 5));
+    ASSERT(comp_double(B.distance(B), 0));
+    ASSERT(comp_double(A.distance(A), 0));
 
     ASSERT(B.equals(B));
     ASSERT(A.equals(A));
 
     Point C(0, 0);
     Point D(1, 1);
-    ASSERT(C.distance(D) == std::sqrt(2));
+    ASSERT(comp_double(C.distance(D), std::sqrt(2)));
 
     Point E(67, 89);
     Point F(-50, -30);
-    ASSERT(E.distance(F) == std::sqrt(27850));
+    ASSERT(comp_double(E.distance(F), std::sqrt(27850)));
 
     std::cout << "--- Fin Tests Point ---" << std::endl << std::endl;
 
