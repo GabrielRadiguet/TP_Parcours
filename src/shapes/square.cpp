@@ -76,9 +76,9 @@ void Square::rotate(double angle){
 
 bool Square::equals(Square square){
 	// Teste si les points A et C de l'instance courante sont égaux aux points A et C de square
-	if ( A.x == square.A.x and A.y == square.A.y and C.x == square.C.x and C.y == square.C.y ){
+	if ( A.equals(square.A) and C.equals(square.C) ){
 		return true;
-	}else if ( A.x == square.C.x and A.y == square.C.y and C.x == square.A.x and C.y == square.A.y ){
+	}else if ( A.equals(square.C) and C.equals(square.A) ){
 		return true;
 	}
 	else{

@@ -101,17 +101,17 @@ bool Triangle::isRightAngled(){
     double ac = A.distance(C);
     double cb = C.distance(B);
     if(ab > ac && ab > cb){
-        if(ab == sqrt(ac * ac + cb * cb)){
+        if(comp_double(ab, sqrt(ac * ac + cb * cb))){
             return true;
         }
     }
     if(ac > ab && ac > cb){
-        if(ac == sqrt(ab * ab + cb * cb)){
+        if(comp_double(ac, sqrt(ab * ab + cb * cb))){
             return true;
         }
     }
     if(cb > ac && cb > ab){
-        if(cb == sqrt(ac * ac + ab * ab)){
+        if(comp_double(cb, sqrt(ac * ac + ab * ab))){
             return true;
         }
     }
@@ -122,7 +122,7 @@ bool Triangle::isEquilateral(){
     double ab = A.distance(B);
     double ac = A.distance(C);
     double cb = C.distance(B);
-    if(ab == ac && ab == cb){
+    if(comp_double(ab, ac) && comp_double(ab, cb)){
         return true;
     }
     return false;
@@ -132,16 +132,16 @@ bool Triangle::isIsoceles(){
     double ab = A.distance(B);
     double ac = A.distance(C);
     double cb = C.distance(B);
-    if(ab == ac || ab == cb || ac == cb){
+    if(comp_double(ab, ac) || comp_double(ab, cb) || comp_double(ac, cb)){
         return true;
     }
     return false;
 }
 
 Circle Triangle::inscribedCircle(){
-    double a = A.distance(B);
-    double b = B.distance(C);
-    double c = C.distance(A);
+    double a = C.distance(B);
+    double b = A.distance(C);
+    double c = B.distance(A);
 
     //https://en.wikipedia.org/wiki/Incenter#Cartesian_coordinates
     double x = (a * A.x + b * B.x + c * C.x) / (a + b + c);

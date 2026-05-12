@@ -11,4 +11,6 @@ struct Point {
 	bool equals(Point B = Point());
 };
 
+bool comp_double(double a, double b, double epsilon = 1e-9);
+
 #endif // POINT_HPP

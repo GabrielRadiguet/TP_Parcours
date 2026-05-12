@@ -36,44 +36,14 @@ void Circle::draw(){
 void Circle::translate(Point T){
     center.x += T.x;
     center.y += T.y;
-    std::vector<Point> liste; 
-    int nSeg = 36; //Nombre de segment de cercle
-    double angle;
-    Point p;
-    for (int i=0; i<nSeg; i++){
-        angle = 2 * M_PI * i / nSeg;
-        p.x = cos(angle)*radius + center.x;
-        p.y = sin(angle)*radius + center.y;
-        liste.push_back(p);
-    }
-    angle = 0;
-    p.x = cos(angle)*radius + center.x;
-    p.y = sin(angle)*radius + center.y;
-    liste.push_back(p);
-    draw_picture(liste);
 }
 
 void Circle::resize(double ratio){
     radius *= ratio;
-    std::vector<Point> liste; 
-    int nSeg = 36; //Nombre de segment de cercle
-    double angle;
-    Point p;
-    for (int i=0; i<nSeg; i++){
-        angle = 2 * M_PI * i / nSeg;
-        p.x = cos(angle)*radius + center.x;
-        p.y = sin(angle)*radius + center.y;
-        liste.push_back(p);
-    }
-    angle = 0;
-    p.x = cos(angle)*radius + center.x;
-    p.y = sin(angle)*radius + center.y;
-    liste.push_back(p);
-    draw_picture(liste);
 }
 
 bool Circle::equals(Circle circle){
-    if (center.x == circle.center.x && center.y == circle.center.y && radius == circle.radius)
+    if (center.equals(circle.center) && comp_double(radius, circle.radius))
         return true;
     return false;
 }

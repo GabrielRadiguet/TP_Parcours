@@ -11,5 +11,9 @@ double Point::distance(Point B) {
 }
 
 bool Point::equals(Point B) {
-    return (x == B.x) && (y == B.y);
+    return comp_double(x, B.x) && comp_double(y, B.y);
+}
+
+bool comp_double(double a, double b, double epsilon){
+    return std::abs(a - b) < epsilon;
 }
